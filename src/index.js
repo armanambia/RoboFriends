@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// if you dont put file ending in import, it will automatically be js
+// import App from './App';
+import Hello from './Hello'
 import reportWebVitals from './reportWebVitals';
+// the package just installed
+import 'tachyons';
 
 ReactDOM.render(
-  
+  //greeting is a react prop// it interacts with the Hello App
   <React.StrictMode>
-    <App />
+    <Hello greeting={'Hello React ninja'}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
