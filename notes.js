@@ -1,4 +1,6 @@
+// ********************************************************************************************************************************
 // ----------------------------------- 221 Switch from functional app.js to class
+// ********************************************************************************************************************************
 // you will basically only change app.js and index.js
 
 // original
@@ -57,7 +59,9 @@ import React, { Component } from 'react';
 
 class Hello extends Component{}
 
+// ********************************************************************************************************************************
 // ----------------------------------- 224 First React Component
+// ********************************************************************************************************************************
 
 // if you use parantheses after return it evaluates ur html and then returns it
 return (
@@ -90,3 +94,75 @@ ReactDOM.render(
 const Hello = (props) =>{
     return ;
 }
+
+
+// ********************************************************************************************************************************
+// ----------------------------------- 225 Building A React App 1
+// ********************************************************************************************************************************
+
+// default to no destructure
+export default Card;
+import Card from './Card'
+
+// robots export is not default, so you have to destructure, can put multiple things in brackets
+export const robots
+import {robots} from './robots'
+
+
+// ********************************************************************************************************************************
+// ----------------------------------- 228 Building A React App 2
+// ********************************************************************************************************************************
+
+const cardsArray = robots.map((cur, i) => {
+  // put a key property when looping to make it unique, helps with dom
+  return <Card 
+          key = {i} 
+          id ={cur.id} 
+          name = {cur.name} 
+          email = {cur.email}
+          />
+})
+
+// ********************************************************************************************************************************
+// ----------------------------------- 228 Building A React App 3
+// ********************************************************************************************************************************
+
+// PROPS are passed down from parent to child, that property can be taken in and then used in a pure (dumb) funciton
+// STATE allows components to change data and communicate with other components by going through their parent
+// STATE >> PROPS, state defines the props
+// to use state you have to create a class app, NOT create an arrow function, then export later
+
+class App extends Component{
+  constructor() {
+      super();
+      this.state = {
+          robots: robots,
+          searchfield: '',
+      }
+  }
+  // we pass this function as an event handler
+    // use the equal signs and arrow function syntax anytime you make your own function on react
+    onSearchChange = (event) => {
+      this.setState({searchfield: event.target.value})
+      const filteredRobots = this.state.robots.filter(robot =>{
+          return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+      })
+      console.log(filteredRobots)
+  }
+
+  render(){
+      return (
+          <div className = 'tc'>
+              <h1>RoboFriends</h1>
+              <SearchBox searchChange={this.onSearchChange}/>
+              <CardList robots={this.state.robots}/>
+          </div>
+          
+      )
+  }
+  
+}
+
+export default App;
+
+// here the this.state holds the state

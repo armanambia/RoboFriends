@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // if you dont put file ending in import, it will automatically be js
 // import App from './App';
-import Hello from './Hello'
+import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+
+
 // the package just installed
 import 'tachyons';
+// robots export is not default, so you have to destructure
 
-ReactDOM.render(
-  //greeting is a react prop// it interacts with the Hello App
-  <React.StrictMode>
-    <Hello greeting={'Hello React ninja'}/>
-  </React.StrictMode>,
-  document.getElementById('root')
+
+
+ReactDOM.render( <App/>, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
