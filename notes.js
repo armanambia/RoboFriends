@@ -173,3 +173,32 @@ export default App;
 
 // children can be retrevied using
 props.children
+
+// ********************************************************************************************************************************
+// ----------------------------------- 240 Error Boundary
+// ********************************************************************************************************************************
+
+// use this so that in production an error doesnt crash it
+class ErrorBoundary extends Componet {
+  constructor(props) {
+      super(props);
+      this.state = {
+          hasError: false
+      }
+  }
+
+  componentDidCatch(error,info){
+      this.setState({hasError:true})
+  }
+
+  render() {
+      if (this.state.hasError){
+          return <h1>OOOps</h1>
+      }
+      else{
+          return this.props.children
+      }
+  }
+}
+
+export default ErrorBoundary
