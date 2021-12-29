@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // if you dont put file ending in import, it will automatically be js
 // import App from './App';
-import App from './App';
+import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 
 
