@@ -1,6 +1,7 @@
 
 import Card from "./Card"
 
+
 const CardList = ({robots})=>{
     const cardsArray = robots.map((cur, i) => {
         // put a key property when looping to make it unique, helps with dom
